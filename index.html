@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Папа, с Новым годом! 🎄</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b69 100%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Анимированные снежинки */
+        .snowflake {
+            position: absolute;
+            color: #fff;
+            font-size: 1.5em;
+            animation: snowfall linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes snowfall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .new-year-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px #ffd700); }
+            to { filter: drop-shadow(0 0 40px #ffd700); }
+        }
+        
+        .personal-greeting {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        
+        .gift-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .gift-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .gift-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .gift-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .perfume-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .notes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .note-group {
+            background: rgba(0, 212, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .note-group h4 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .note-group ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .note-group li {
+            padding: 5px 0;
+            opacity: 0.9;
+        }
+        
+        .distance-note {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+        
+        .heart {
+            font-size: 3rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: block;
+            margin: 20px 0;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+        
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .gift-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .notes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="snow-container" id="snowContainer"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="new-year-title">🎄 С Новым 2026 Годом! 🎄</h1>
+            <p class="personal-greeting">Дорогой Папа! Поздравляю тебя с самым волшебным праздником! Пусть Новый год принесет здоровье, успех и море радости! </p>
+        </header>
+        
+        <div class="section">
+            <h2>Твой подарок!</h2>
+            <div class="gift-container">
+                <div class="gift-image">
+                    <img src="duhi.jpg" alt="Kenzo L'Eau par Kenzo pour Homme" loading="lazy">
+                </div>
+                <div class="gift-info">
+                    <div class="perfume-name">Kenzo L'Eau par Kenzo pour Homme</div>
+                    
+                    <div class="notes-grid">
+                        <div class="note-group">
+                            <h4>🌿 Верхние ноты</h4>
+                            <ul>
+                                <li>Юдзу (Yuzu)</li>
+                                <li>Лимон</li>
+                                <li>Зеленый перец</li>
+                            </ul>
+                        </div>
+                        <div class="note-group">
+                            <h4>💧 Сердечные ноты</h4>
+                            <ul>
+                                <li>Водные аккорды</li>
+                                <li>Лотос</li>
+                                <li>Мята</li>
+                            </ul>
+                        </div>
+                        <div class="note-group">
+                            <h4>🌲 База</h4>
+                            <ul>
+                                <li>Кедр</li>
+                                <li>Белый мускус</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="distance-note">
+                        <span class="heart">💝</span>
+                        <p>Мы сейчас далеко друг от друга, но подарок уже ждет тебя! Мама его передаст! </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>✨ Пожелания от сердца</h2>
+            <ul style="font-size: 1.2rem; line-height: 2; max-width: 600px; margin: 0 auto;">
+                <li>🔥 Крепкого здоровья и энергии на все 100%</li>
+                <li>💼 Успехов в работе и новых вершин</li>
+                <li>🏠 Уюта и тепла в доме</li>
+                <li>🌍 Путешествий и новых впечатлений</li>
+                <li>❤️ И главное - счастья каждый день! </li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>С любовью, твой Настя❤️ 31.12.2025</p>
+        </div>
+    </div>
+    
+    <script>
+        // Создание снежинок
+        function createSnowflakes() {
+            const snowContainer = document.getElementById('snowContainer');
+            const snowflakeCount = 100;
+            
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.innerHTML = '❄️';
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                snowflake.style.animationDelay = Math.random() * 2 + 's';
+                snowflake.style.opacity = Math.random();
+                snowflake.style.fontSize = (Math.random() * 0.5 + 0.5) + 'em';
+                snowContainer.appendChild(snowflake);
+                
+                // Удаление снежинки после анимации
+                setTimeout(() => {
+                    if (snowflake.parentNode) {
+                        snowflake.parentNode.removeChild(snowflake);
+                    }
+                }, 7000);
+            }
+        }
+        
+        // Запуск снежинок каждые 3 секунды
+        createSnowflakes();
+        setInterval(createSnowflakes, 3000);
+        
+        // Параллакс эффект при скролле
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.container');
+            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
